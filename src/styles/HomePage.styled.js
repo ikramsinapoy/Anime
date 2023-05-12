@@ -7,17 +7,36 @@ const Container = styled.div`
   margin: 0 auto;
 `
 const Card = styled.div`
-  border: 1px solid #000000;
+  border: 1px solid #d3dce6;
   border-radius: 10px;
   width: 250px;
   height: 350px;
-  /* background-image: url(${(props) => props.bg}); */
+  padding: 20px;
+  background-image: url("https://media.kitsu.io/anime/poster_images/254/original.png");
+  /* background-repeat: no-repeat; */
+  background-size: cover;
+  color: #ffffff;
 
-  p {
+  div {
+    height: 100%;
     display: flex;
-    align-items: end;
+    flex-direction: column;
+    align-items: center;
+    justify-content: end;
+    /* padding-bottom: 20px; */
   }
+
+  /* div div{
+    margin-top: auto;
+  } */
+
 `
+const TitleCard = styled.p`
+  color: #ffffff;
+  text-decoration: none;
+  display:inline-block;
+`
+
 const Wrapper = styled.div`
     display: grid;
     grid-template-columns: auto auto auto;
@@ -46,5 +65,6 @@ export {
     Card,
     Wrapper,
     Button,
-    ButtonWrapper
+    ButtonWrapper,
+    TitleCard
 }

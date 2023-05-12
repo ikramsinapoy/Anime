@@ -4,6 +4,7 @@ import axios from "axios";
 import { Container } from '../styles/HomePage.styled';
 import ListAnime from '../components/ListAnime';
 import ButtonPagination from '../components/ButtonPagination';
+import ReactLoading from "react-loading";
 
 const config = {
   headers: {
@@ -15,8 +16,10 @@ function HomePage() {
     const [anime, setAnime] = useState([]);
     const [prevLink, setPrevLink] = useState(null);
     const [nextLink, setNextLink] = useState(null);
+    const [loading, setLoading] = useState(false);
 
     const fetchAnime = async () => {
+        setLoading(true);
         await Axios.get(`/anime?page[limit]=10&page[offset]=0`).then((resp) => {
           // console.log("data: ",resp.data)
             setAnime(resp.data.data);
@@ -25,6 +28,7 @@ function HomePage() {
             // setFirstLink(resp.data.links.first);
             // setLastLink(resp.data.links.last);
         })
+        setLoading(false);
         
     }
     // console.log(prevLink)
@@ -39,6 +43,7 @@ function HomePage() {
     // }
 
     const handlePrevClick = async () => {
+      setLoading(true);
       await axios.get(prevLink, config).then((resp) => {
         setAnime(resp.data.data);
         setPrevLink(resp.data.links.prev);
@@ -46,10 +51,12 @@ function HomePage() {
         // setFirstLink(resp.data.links.first);
         // setLastLink(resp.data.links.last);
       })
+      setLoading(false);
       localStorage.setItem("currentPage", prevLink)
     }
 
     const handleNextClick = async () => {
+      setLoading(true);
       await axios.get(nextLink, config).then((resp) => {
         setAnime(resp.data.data);
         setPrevLink(resp.data.links.prev);
@@ -57,6 +64,7 @@ function HomePage() {
         // setFirstLink(resp.data.links.first);
         // setLastLink(resp.data.links.last);
       })
+      setLoading(false);
       localStorage.setItem("currentPage", nextLink)
     }
 
@@ -78,6 +86,7 @@ function HomePage() {
         fetchAnime();
       } else {
         const fetchCurrentPage = async () => {
+          setLoading(true);
           await axios.get(currentPage, config).then((resp) => {
             console.log(resp.data)
             setAnime(resp.data.data);
@@ -86,7 +95,9 @@ function HomePage() {
             // setFirstLink(resp.data.links.first);
             // setLastLink(resp.data.links.last);
           })
+          setLoading(false);
           localStorage.setItem("currentPage", currentPage)
+
         }
 
         fetchCurrentPage()
@@ -102,7 +113,11 @@ function HomePage() {
   return (
     <div>
       <Container>
-        <ListAnime anime={anime}/>
+        {loading === true? 
+          <ReactLoading type="spin" color="#0000FF" height={100} width={50} />
+          :
+          <ListAnime anime={anime}/>
+        }
         <ButtonPagination handlePrevClick={handlePrevClick} handleNextClick={handleNextClick} prevLink={prevLink} nextLink={nextLink}/>
       </Container>
     </div>
