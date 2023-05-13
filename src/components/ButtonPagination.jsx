@@ -1,17 +1,16 @@
 import React from 'react'
-import { Button, ButtonWrapper } from '../styles/HomePage.styled'
+import { Button, CenterWrapper } from '../styles/HomePage.styled'
 
-function ButtonPagination({ handlePrevClick, handleNextClick, prevLink, nextLink }) {
+function ButtonPagination({ handlePrevClick, handleNextClick, handleFirstClick, handleLastClick, prevLink, nextLink }) {
   return (
-    <ButtonWrapper>
+    <CenterWrapper>
         <div>
+            <Button onClick={handleFirstClick}>First</Button>
             <Button onClick={handlePrevClick} disabled={!prevLink}>Previous</Button>
             <Button onClick={handleNextClick} disabled={!nextLink}>Next</Button>
+            <Button onClick={handleLastClick}>Last</Button>
         </div>
-        {/* <button onClick={handleFirstClick}>First</button> */}
-        
-        {/* <button onClick={handleLastClick}>Last</button> */}
-    </ButtonWrapper>
+    </CenterWrapper>
   )
 }
 

@@ -9,43 +9,91 @@ const Container = styled.div`
 const Card = styled.div`
   border: 1px solid #d3dce6;
   border-radius: 10px;
-  width: 250px;
-  height: 350px;
-  padding: 20px;
-  background-image: url("https://media.kitsu.io/anime/poster_images/254/original.png");
-  /* background-repeat: no-repeat; */
-  background-size: cover;
-  color: #ffffff;
+  width: 300px;
+  height: 400px;
 
-  div {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: end;
-    /* padding-bottom: 20px; */
+  p {
+    font-size: 14px;
+    color: #000000;
+    
   }
 
-  /* div div{
-    margin-top: auto;
-  } */
+  img {
+    width: 298px;
+    height: 320px;
+    border-radius: 10px 10px 0px 0px;
+    object-fit: cover;
+  }
 
 `
-const TitleCard = styled.p`
-  color: #ffffff;
-  text-decoration: none;
+const ContenWrapper = styled.div`
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
   display:inline-block;
 `
+const WrapperLayout = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 80px;
 
+  h1 {
+    font-size: 42px;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  span {
+    background-color: #59CAFF;
+    color: #ffffff;
+    padding: 2px;
+    border-radius: 10px;
+  }
+
+  @media (max-width: 630px) {
+    padding: 10px 10px 50px 10px;
+    h1 {
+      font-size: 28px;
+    }
+  }
+`
+const LayoutImg = styled.img`
+  margin-top: 20px;
+  width: 700px;
+  border-radius: 10px;
+
+  @media (max-width: 630px) {
+      width: 350px;
+  }
+`
+const TitleCard = styled.p`
+  color: #2B2B49;
+  display:inline-block;
+  font-weight: bold;
+  margin-bottom: 2px;
+
+  &:hover {
+    text-decoration: underline;
+    font-size: 16px;
+  }
+
+`
 const Wrapper = styled.div`
     display: grid;
     grid-template-columns: auto auto auto;
-    /* background-color: #2196F3; */
     gap: 10px;
     justify-items: center;
+
+    @media (max-width: 1000px) {
+      grid-template-columns: auto auto;
+    }
+
+    @media (max-width: 630px) {
+      grid-template-columns: auto;
+    } 
 `
 const Button = styled.button`
-
   color: #ffffff;
   background: #59CAFF;
   font-size: 20px;
@@ -53,11 +101,20 @@ const Button = styled.button`
   padding: 0.25em 1em;
   border: 2px solid #59CAFF;
   border-radius: 3px;
-`;
 
-const ButtonWrapper = styled.div`
+  &:hover {
+    cursor: pointer;
+  }
+
+  @media (max-width: 630px) {
+    padding: 0.25em;
+  } 
+`;
+const CenterWrapper = styled.div`
     display: flex;
     justify-content: center;
+    align-items: center;
+    margin-top: 10px;
 `
 
 export {
@@ -65,6 +122,9 @@ export {
     Card,
     Wrapper,
     Button,
-    ButtonWrapper,
-    TitleCard
+    CenterWrapper,
+    TitleCard,
+    ContenWrapper,
+    WrapperLayout,
+    LayoutImg
 }
