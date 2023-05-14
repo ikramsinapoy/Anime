@@ -15,7 +15,7 @@ function DetailAnime({ anime }) {
                 <h3>{anime.attributes.titles.en}</h3>
                 </div> */}
 
-                <UserRating anime={anime}/>
+                {/* <UserRating anime={anime}/> */}
             {/* </TopBox> */}
                 
             <h4>Synopsis</h4>
