@@ -5,7 +5,7 @@ const Container = styled.div`
   max-width: 100%;
   padding: 30px 20px;
   margin: 0 auto;
-`
+`;
 const Card = styled.div`
   border: 1px solid #d3dce6;
   border-radius: 10px;
@@ -15,23 +15,21 @@ const Card = styled.div`
   p {
     font-size: 14px;
     color: #000000;
-    
   }
 
   img {
-    width: 298px;
+    width: 300px;
     height: 320px;
     border-radius: 10px 10px 0px 0px;
     object-fit: cover;
   }
-
-`
+`;
 const ContenWrapper = styled.div`
   padding: 5px;
   display: flex;
   flex-direction: column;
   display:inline-block;
-`
+`;
 const WrapperLayout = styled.div`
   display: flex;
   flex-direction: column;
@@ -57,7 +55,7 @@ const WrapperLayout = styled.div`
       font-size: 28px;
     }
   }
-`
+`;
 const LayoutImg = styled.img`
   margin-top: 20px;
   width: 700px;
@@ -66,7 +64,7 @@ const LayoutImg = styled.img`
   @media (max-width: 630px) {
       width: 350px;
   }
-`
+`;
 const TitleCard = styled.p`
   color: #2B2B49;
   display:inline-block;
@@ -77,22 +75,21 @@ const TitleCard = styled.p`
     text-decoration: underline;
     font-size: 16px;
   }
-
-`
+`;
 const Wrapper = styled.div`
-    display: grid;
-    grid-template-columns: auto auto auto;
-    gap: 10px;
-    justify-items: center;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  gap: 10px;
+  justify-items: center;
 
-    @media (max-width: 1000px) {
-      grid-template-columns: auto auto;
-    }
+  @media (max-width: 1000px) {
+    grid-template-columns: auto auto;
+  }
 
-    @media (max-width: 630px) {
-      grid-template-columns: auto;
-    } 
-`
+  @media (max-width: 630px) {
+    grid-template-columns: auto;
+  } 
+`;
 const Button = styled.button`
   color: #ffffff;
   background: #59CAFF;
@@ -115,7 +112,7 @@ const CenterWrapper = styled.div`
     justify-content: center;
     align-items: center;
     margin-top: 10px;
-`
+`;
 
 export {
     Container,

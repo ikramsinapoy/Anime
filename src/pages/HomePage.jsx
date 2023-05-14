@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Axios } from '../utils/api';
+import { Axios, config } from '../utils/api';
 import axios from "axios";
 import { CenterWrapper, Container } from '../styles/HomePage.styled';
 import ListAnime from '../components/ListAnime';
@@ -7,13 +7,6 @@ import ButtonPagination from '../components/ButtonPagination';
 import ReactLoading from "react-loading";
 import Layout from '../components/Layout';
 
-const config = {
-  mode: 'cors',
-  headers: {
-    "Accept": "application/vnd.api+json",
-    "Content-Type": "application/vnd.api+json",
-  }
-}
 function HomePage() {
     const [anime, setAnime] = useState([]);
     const [prevLink, setPrevLink] = useState(null);
@@ -26,11 +19,14 @@ function HomePage() {
         setLoading(true);
         await Axios.get(`/anime?page[limit]=10&page[offset]=0`).then((resp) => {
             setAnime(resp.data.data);
-            setPrevLink(resp.data.links.prev);
             setNextLink(resp.data.links.next);
             setFirstLink(resp.data.links.first);
             setLastLink(resp.data.links.last);
-        })
+        }).catch((error) => {
+        if (error.response) {
+          console.log(error);
+        }
+      });
         setLoading(false);
     }
 
@@ -38,7 +34,6 @@ function HomePage() {
       setLoading(true);
       await axios.get(firstLink, config).then((resp) => {
         setAnime(resp.data.data);
-        setPrevLink(resp.data.links.prev);
         setNextLink(resp.data.links.next);
         setFirstLink(resp.data.links.first);
         setLastLink(resp.data.links.last);
@@ -80,7 +75,6 @@ function HomePage() {
         setPrevLink(resp.data.links.prev);
         setNextLink(resp.data.links.next);
         setFirstLink(resp.data.links.first);
-        setLastLink(resp.data.links.last);
       })
       sessionStorage.setItem("currentPage", lastLink)
       setLoading(false);
@@ -110,7 +104,6 @@ function HomePage() {
       }
     }, [])
 
-    console.log(anime)
   return (
     <div>
       
@@ -118,7 +111,7 @@ function HomePage() {
         <Layout/>
         {loading === true?
           <CenterWrapper>
-            <ReactLoading type="spin" color="#0000FF" height={100} width={50} />
+            <ReactLoading type="spin" color="#59CAFF" height={100} width={50} />
           </CenterWrapper>
           :
           <ListAnime anime={anime}/>

@@ -1,11 +1,11 @@
 import React from 'react'
 import { FooterNav } from '../styles/Navigation.styled'
-// import { MdCopyright } from 'react-icons/md';
+import { MdCopyright } from 'react-icons/md';
 
 function Footer() {
   return (
     <FooterNav>
-        <p>Copyright Muhammad Ikram Kaer Sinapoy</p>
+        <p>Copyright <MdCopyright/> Muhammad Ikram Kaer Sinapoy</p>
     </FooterNav>
   )
 }

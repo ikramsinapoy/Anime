@@ -1,14 +1,14 @@
 import React from 'react'
 import { RatingBox, RatingText, ScoreText } from '../styles/DetailPage.styled'
 
-function UserRating({ anime }) {
+function UserRating({ averageRating, userCount }) {
   return (
     <div>
-        <RatingBox>
-            <ScoreText>SCORE</ScoreText>
-            <RatingText>{anime.averageRating === null? "-" : anime.averageRating}</RatingText>
-            <p>{anime.userCount} users</p>
-        </RatingBox>
+      <RatingBox>
+          <ScoreText>SCORE</ScoreText>
+          <RatingText>{averageRating === null? "-" : averageRating}</RatingText>
+          <p>{userCount} users</p>
+      </RatingBox>
     </div>
   )
 }

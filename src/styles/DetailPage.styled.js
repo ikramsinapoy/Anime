@@ -5,14 +5,12 @@ const Container = styled.div`
   max-width: 100%;
   padding: 30px 20px;
   margin: 0 auto;
-  
-`
-
+`;
 const Wrapper = styled.div`
   display: flex;
   gap: 32px;
   align-items: center;
-  color: #E6E4D5;
+  margin: 100px 0px;
 
   h2 {
     font-size: 42px;
@@ -30,11 +28,18 @@ const Wrapper = styled.div`
     font-size: 20px;
     margin-bottom: 15px;
   }
-  
+
+  div {
+    margin-bottom: 15px;
+  }
+  @media (max-width: 1000px) {
+    margin: 0px 0px;
+  }
+
   @media (max-width: 768px) {
     flex-direction: column;
   }
-`
+`;
 const PosterImg = styled.img`
   width: 300px;
   height: 400px;
@@ -43,31 +48,29 @@ const PosterImg = styled.img`
   border-radius: 10px;
   border: 1px solid #E6E4D5;
   filter: drop-shadow(2px 2px 1px #E6E4D5);
-`
+`;
 const RatingBox = styled.div`
   width: max-content;
   height: max-content;
   padding: 10px;
-  background-color: #E6E4D5;
+  background-color: #59CAFF;
   border-radius: 10px;
-  color: #1B424C;
+  color: #ffffff;
   font-size: 12px;
   
   display: flex;
   flex-direction: column;
   align-items: center;
-`
+`;
 const RatingText = styled.p`
   font-size: 24px;
   font-weight: bold;
   margin-top: 5px;
   margin-bottom: 5px;
-` 
-
+`;
 const ScoreText = styled.p`
   font-weight: bold;
-`
-
+`;
 const TopBox = styled.div`
   display: flex;
   justify-content: space-between;
@@ -75,8 +78,9 @@ const TopBox = styled.div`
   gap: 20px;
   @media (max-width: 768px) {
     flex-direction: column;
+    gap: 5px;
   }
-`
+`;
 
 export {
     TopBox,

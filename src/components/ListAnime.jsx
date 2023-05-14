@@ -6,15 +6,17 @@ function ListAnime({ anime }) {
   return (
     <Wrapper>
         {anime?.map((item) => (
-            <Card key={item.id}>
-              <Link to={`/detail-anime/${item.id}`}>
-              <img src={item.attributes.posterImage.large} alt='cover'/>
-              <ContenWrapper>
-                  <TitleCard>{item.attributes.titles.en_jp}</TitleCard>
-                  <p>{item.attributes.titles.en}</p>
-              </ContenWrapper>
-              </Link>
-            </Card>
+          <Card key={item.id}>
+            <Link to={`/detail-anime/${item.id}`}>
+            <img src={item.attributes.posterImage.original} alt='cover'/>
+            <ContenWrapper>
+                <TitleCard>
+                  {item.attributes.titles.en_jp === undefined? item.attributes.canonicalTitle : item.attributes.titles.en_jp}
+                </TitleCard>
+                <p>{item.attributes.titles.en}</p>
+            </ContenWrapper>
+            </Link>
+          </Card>
         ))}
     </Wrapper>
   )

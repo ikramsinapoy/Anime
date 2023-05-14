@@ -7,59 +7,46 @@ import DetailAnime from '../components/DetailAnime';
 import { CenterWrapper } from '../styles/HomePage.styled';
 
 function DetailPage() {
-  const { id } = useParams()
-  const [initialValue, setInitialValue] = useState({
-    image: "",
-    tittle: {},
-    rating: "",
-    user: 0,
-    synopsis: ""
-  })
-  // const initialValue = {
-  //   image: "",
-  //   tittle: {},
-  //   rating: "",
-  //   user: 0,
-  //   synopsis: ""
-  // };
-  const [anime, setAnime] = useState({})
+  const { id } = useParams();
+  const [anime, setAnime] = useState({});
   const [loading, setLoading] = useState(false);
 
-  // console.log('sebelum fetch')
   const fetchAnime = async () => {
       setLoading(true);
       await Axios.get(`/anime/${id}`).then((resp) => {
-        console.log("data fetch: ",resp.data.data)
-        setAnime(resp.data.data)
-        console.log("data fetch2: ",resp.data)
+        setAnime(resp.data.data.attributes);
       }).catch((error) => {
         if (error.response) {
           console.log(error);
         }
       });
-
-      // console.log("anime: ",anime)
+      
       setLoading(false);
   }
-  // console.log('setelah fetch')
   useEffect(() => {
     fetchAnime();
-  }, [])
+  }, []);
 
-  // console.log('initialValue',initialValue)
+  const { synopsis, canonicalTitle, titles, posterImage, averageRating, userCount } = anime || {};
+  
   return (
     <div>
-        <Container>
-            {loading === true? 
-              <CenterWrapper>
-                <ReactLoading type="spin" color="#0000FF" height={100} width={50} />
-              </CenterWrapper>
-              :
-              // <DetailAnime anime={anime.attributes}/>
-              <p>Anime</p>
-          }
-        </Container>
-
+      <Container>
+        {loading === true? 
+          <CenterWrapper>
+            <ReactLoading type="spin" color="#59CAFF" height={100} width={50} />
+          </CenterWrapper>
+          :
+          <DetailAnime 
+            synopsis={synopsis} 
+            canonicalTitle={canonicalTitle} 
+            titles={titles}
+            posterImage={posterImage}
+            userCount={userCount}
+            averageRating={averageRating}
+          />
+        }
+      </Container>
     </div>
   )
 }
